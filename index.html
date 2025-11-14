@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Journal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Mein Trading Journal</h1>
+            <p>Dokumentiere deine Trades und analysiere deine Performance</p>
+        </header>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <h3>Gesamt Trades</h3>
+                <p id="totalTrades">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Gewinnende Trades</h3>
+                <p id="winningTrades">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Verlierende Trades</h3>
+                <p id="losingTrades">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Gesamt P&L</h3>
+                <p id="totalPnL">0.00 €</p>
+            </div>
+        </div>
+
+        <div class="add-trade-section">
+            <h2>Neuen Trade hinzufügen</h2>
+            <form id="tradeForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Datum</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="symbol">Symbol</label>
+                        <input type="text" id="symbol" placeholder="z.B. EUR/USD" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="direction">Richtung</label>
+                        <select id="direction" required>
+                            <option value="">Wählen...</option>
+                            <option value="Long">Long</option>
+                            <option value="Short">Short</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Positionsgröße</label>
+                        <input type="number" id="size" step="0.01" placeholder="Lot/Stück">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="entry">Entry Preis</label>
+                        <input type="number" id="entry" step="0.00001" placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="exit">Exit Preis</label>
+                        <input type="number" id="exit" step="0.00001" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pnl">P&L (€)</label>
+                        <input type="number" id="pnl" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="chart">Chart Bild</label>
+                        <input type="file" id="chart" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notizen</label>
+                    <textarea id="notes" rows="3" placeholder="Trading-Setup, Gründe für Entry/Exit, Emotionen, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Trade hinzufügen</button>
+            </form>
+        </div>
+
+        <div class="trades-section">
+            <div class="section-header">
+                <h2>Meine Trades</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="Long">Long</button>
+                    <button class="filter-btn" data-filter="Short">Short</button>
+                    <button class="filter-btn" data-filter="winning">Gewinner</button>
+                    <button class="filter-btn" data-filter="losing">Verlierer</button>
+                </div>
+            </div>
+            <div id="tradesList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
